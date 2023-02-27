@@ -3,41 +3,35 @@
 /**
  * Module dependencies.
  */
-
-//var app = require('../app');
-import app from '../app';
-//var debug = require('debug')('sprint-1-back:server');
-import debug from 'debug';
-//var http = require('http');
+import app from '../app.js';
+import debugLib from 'debug';
 import http from 'http';
+
+const debug = debugLib('sprint-1-back:server');
 
 /**
  * Get port from environment and store in Express.
  */
-
-let port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
-let server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
+server.listen(port, () => console.log(`Server running on port ${port}`));
 server.on('error', onError);
 server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
-  let port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -55,15 +49,12 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  let bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -83,11 +74,8 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
-  let addr = server.address();
-  let bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  const addr = server.address();
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
