@@ -12,15 +12,8 @@ router.post('/', async (req, res) => {
     console.log(err);
     return res.status(400).json({succes : false, message: 'usuario no creado'});
   }
-  // Access the data sent in the request body
- 
-  
-  // Do something with the data, such as saving it to a database
-  console.log(`Received user data: name=${name}, email=${email}`);
-  
-  // Send a response
-  res.status(200).send('User created successfully');
 });
+  
 
 export default router;
 

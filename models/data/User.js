@@ -21,6 +21,27 @@ const userSchema = new mongoose.Schema({
   receiveNotifications: {
     type: Boolean,
     default: false
+  },
+  age: Number,
+  gender: String,
+  address: String,
+  phone: String,
+  avatar: String,
+  role: {
+    type: String,
+    default: 'user'
+  },
+  is_online: {
+    type: Boolean,
+    default: false
+  },
+  is_admin: {
+    type: Boolean,
+    default: false
+  },
+  is_author: {
+    type: Boolean,
+    default: false
   }
 },
 {timestamps: true});
