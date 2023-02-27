@@ -1,11 +1,13 @@
-//var express = require('express');
+import usersRouter from './users.js';
 import express from 'express';
-let router = express.Router();
+import createError from 'http-errors';
+
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.post('/', function(req, res, next) {
+res.render('index', { title: 'Api de prueba' });
 });
 
-//module.exports = router;
-export default router;
+router.use('/users', usersRouter)
+export default router; 
